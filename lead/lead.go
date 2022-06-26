@@ -31,7 +31,7 @@ func GetLead(c *fiber.Ctx) {
 func NewLead(c *fiber.Ctx) {
 	db := database.DBConn
 	lead := new(Lead)
-	if err := c.BadyParser(lead); err != nil {
+	if err := c.BodyParser(lead); err != nil {
 		c.Status(503).Send(err)
 		return
 	}
