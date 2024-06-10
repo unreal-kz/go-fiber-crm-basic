@@ -27,6 +27,7 @@ func initDatabase() {
 	fmt.Println("Connection opened to database")
 	database.DBConn.AutoMigrate(&lead.Lead{})
 	fmt.Println("Database Migrated")
+	//defer database.DBConn.Close()
 }
 
 func main() {
@@ -34,5 +35,5 @@ func main() {
 	initDatabase()
 	setupRoutes(app)
 	log.Fatal(app.Listen(3000))
-	defer database.DBConn.Close()
+
 }
